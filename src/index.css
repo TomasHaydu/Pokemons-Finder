@@ -1,9 +1,18 @@
+:root {
+    --red:rgb(214, 99, 99) ;
+    --pink:rgb(240,200,204) ;
+    --yellow:rgb(255,211,0) ;
+    --lightblue:rgb(152,213,239) ;
+    --blue:rgb(71,118,181) ;
+}
+
+
 body {
 margin: 0;
 padding: 0;
 margin-top: 0;
 font-family: 'Roboto', sans-serif;;
-background-color: rgb(214, 214, 214);
+background-color:var(--yellow) ;
 }
 
 .header {
@@ -20,6 +29,7 @@ background-color: rgb(214, 214, 214);
     border-radius: 0px 0px 1.7vh 1.7vh;
 }
 
+
 .header__title {
     font-size: 8vh;
     font-weight: bold;
@@ -28,14 +38,26 @@ background-color: rgb(214, 214, 214);
     margin-right: 17vh;
 }
 
+.fav__button {
+    width: 14vh;
+    height: 14vh;
+    position: fixed;
+    bottom: 6%;
+    right: 1%;
+    border-radius: 100%;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.623);
+    animation: animationFavFixed 5s ease 0s 9999999999 normal forwards;
+}
+
 .block {
     margin: auto;
     margin-top: 5.2vh;
     font-size: 5.2vh;
     padding: 1.4vh;
-    border: 3px solid rgb(231, 231, 231);
+    border: 3px solid var(--red);
     border-radius: 3.4vh;
-    background-color: rgb(231, 231, 231);
+    background-color: var(--red);
     width: 86vh;
 }
 
@@ -51,19 +73,37 @@ background-color: rgb(214, 214, 214);
     padding-left: 2.6vh;
 }
 
+.block__finder-suggest{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    background-color: #FFF;
+}
+
 .container {
     display: grid;
     margin: 3.4vh 10vh ;
-    background-color: rgb(231, 231, 231) ;
-    border: 3px solid rgb(231, 231, 231);
+    background-color: var(--blue) ;
+    border: 3px solid var(--blue);
     border-radius: 10px;
     grid-template-columns: 40vh 40vh 40vh 40vh;
     justify-content: space-evenly;
     width: 90%;
 }
 
+.container__pokemons_container {
+    width: 42vh;
+    height: 60vh;
+    margin: 3.4vh auto;
+    color: #FFF;
+    font-size: 3.4vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .container__pokemons{
-    background-color: rgb(0, 0, 0);
+    background-color: var(--lightblue);
     border: 1px solid rgb(255, 255, 255);
     border-radius: 5px;
     margin: 3.4vh auto;
@@ -72,33 +112,71 @@ background-color: rgb(214, 214, 214);
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40vh;
+    width: 42vh;
     height: 60vh;
 }
 
-.container__pokemons__title {
-    margin-top: 1.7vh;
-    text-decoration: underline;
-
+.container__pokemons-modal{
+    background-color: var(--lightblue);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    margin: 3.4vh auto;
+    color: #FFF;
+    font-size: 3.4vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 60vh;
+    grid-column: 1 / 5 ;
+    animation: modalInfo 0.9s ease 0s 1 normal forwards;
 }
 
 .container__pokemons__name {
-    margin-top: 8px;
+    margin: auto;
     border: 2px solid white;
     border-radius: 10%;
-    padding: 0.8vh 3.4vh;
+    padding: 0.8vh 1.4vh;
     background-color: rgb(88, 88, 88);
+    text-transform: uppercase;
 }
 
+.container__pokemons__info-modal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container__pokemons__fav {
+    width: 4vh;
+    height: 4vh;
+    display: flex;
+    margin-right: 80%;
+    border: 2px solid var(--lightblue);
+    cursor: pointer;
+}
+
+.container__pokemons__fav:hover {
+    width: 4vh;
+    height: 4vh;
+    display: flex;
+    margin-right: 80%;
+    border: 2px solid var(--lightblue);
+    border-radius: 40%;
+    background-color: lightblue;
+    animation: animationFav 0.4s ease 0s 1 normal forwards;
+}
 .container__pokemons__img {
+    margin: auto;
     width: 35vh;
     height: 35vh;
-    border: 3px solid black;
+    animation: myAnimEntrance 0.9s ease 0s 1 normal forwards;
 }
 
 .container__pokemons__button {
-    margin-top: 0vh;
-    margin-bottom: 2vh ;
+    margin-left: 5.5vh;
+    margin-bottom: 2vh;
     height: 6vh;
     width: 20vh;
     background-color: rgb(65, 114, 98);
@@ -112,6 +190,23 @@ background-color: rgb(214, 214, 214);
 
 .container__pokemons__button:hover {
     background-color: rgb(54, 165, 128);
+}
+
+.container__pokemons__button-info {
+    width: 5vh;
+    height: 5vh;
+    margin-left: 4vh;
+    background-color: rgb(188, 222, 236) ;
+    border: 3px solid white;
+    border-radius: 100%;
+    color: white;
+    font-size: 3vh;
+    cursor: pointer;
+    animation: animationFavFixed 10s ease 0s 9999999999 normal forwards;
+}
+
+.container__pokemons__button-info:hover {
+    background-color: rgb(213, 229, 236) ;
 }
 
 .nav {
@@ -164,6 +259,7 @@ background-color: rgb(214, 214, 214);
     border-radius: 3.4vh;
     background-color: rgb(231, 182, 182);
     width: 86vh;
+    height: 7vh;
     cursor: pointer;
 }
 
@@ -194,15 +290,34 @@ background-color: rgb(214, 214, 214);
     max-width: 35vh;
     max-height: 35vh;
     background-color: rgb(57, 57, 57);
-    border: 3px solid black;
-    border-radius: 10px;
+    border-radius: 2vh;
+    margin-bottom: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center ;
+    align-items: baseline;
+    animation: myAnimEntrance 0.9s ease 0s 1 normal forwards;
+}
+
+.modal-info {
+    width: 120vh;
+    height: 35vh;
+    background-color: rgb(57, 57, 57);
+    border-radius: 2vh;
+    margin-bottom: 1vh;
+    margin-left: 6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center ;
+    align-items: baseline;
+    animation: modalInfo-data 0.9s ease 0s 1 normal forwards;
 }
 
 .modal__container {
     display: flex;
     justify-content: start;
     font-size: 1.7vh;
-    margin: 1.7vh 1.5vh;
+    margin: 1vh 1.2vh;
 }
 .modal__container--label {
     background-color: rgb(101, 252, 126);
@@ -220,4 +335,94 @@ background-color: rgb(214, 214, 214);
     border: 2px solid rgb(57, 57, 57);
     background-color: rgb(57, 57, 57);
     border-radius: 5px;
+}
+
+@keyframes myAnimExit {
+	0% {
+		transform: scale(1);
+	}
+
+	30% {
+		transform: scale(0.99);
+	}
+
+    60% {
+        transform: scale(1);
+    }
+
+    90% {
+		transform: scale(0.99);
+	}
+}
+
+
+@keyframes myAnimEntrance {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes animationFav {   
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+    
+}
+
+@keyframes animationFavFixed {   
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes modalInfo-data {
+	0% {
+		opacity: 0;
+		transform: rotateY(100deg);
+		transform-origin: left;
+	}
+
+	100% {
+		opacity: 1;
+		transform: rotateY(0);
+		transform-origin: left;
+	}
+}
+
+@keyframes modalInfo {
+	0% {
+		opacity: 0;
+		transform: rotateY(100deg);
+		transform-origin: left;
+	}
+
+	100% {
+		opacity: 1;
+		transform: rotateY(0);
+		transform-origin: left;
+	}
 }

@@ -1,4 +1,5 @@
 const Modal = ({ pokeInfo }) => {
+
     return (
         <div
             className='modal'
@@ -43,6 +44,7 @@ const Modal = ({ pokeInfo }) => {
                 {(pokeInfo.abilities).map(poke => 
                 <p
                  className='modal__container--info'
+                 key={poke.ability.name}
                  >{poke.ability.name}</p>)}
             </div>
             <div
@@ -54,6 +56,7 @@ const Modal = ({ pokeInfo }) => {
                 {(pokeInfo.types).map(poke =>
                 <p
                  className='modal__container--info'
+                 key={poke.type.name}
                 >{poke.type.name}</p>)}
             </div>
             <div
@@ -65,6 +68,7 @@ const Modal = ({ pokeInfo }) => {
                 {(pokeInfo.forms).map(poke =>
                 <p
                  className='modal__container--info'
+                 key={poke.name}
                 >{poke.name}</p>)}
             </div>
 

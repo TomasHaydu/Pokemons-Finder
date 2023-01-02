@@ -114,6 +114,7 @@ background-color:var(--yellow) ;
     align-items: center;
     width: 42vh;
     height: 60vh;
+    animation: modalNotInfo 0.9s ease 0s 1 normal forwards;
 }
 
 .container__pokemons-modal{
@@ -331,6 +332,7 @@ background-color:var(--yellow) ;
 }
 
 .modal__container--info {
+    padding: 0.5vh;
     margin: auto;
     border: 2px solid rgb(57, 57, 57);
     background-color: rgb(57, 57, 57);
@@ -424,5 +426,19 @@ background-color:var(--yellow) ;
 		opacity: 1;
 		transform: rotateY(0);
 		transform-origin: left;
+	}
+}
+
+@keyframes modalNotInfo {
+	0% {
+		opacity: 0;
+		transform: rotateY(100deg);
+		transform-origin: right;
+	}
+
+	100% {
+		opacity: 1;
+		transform: rotateY(0);
+		transform-origin: right;
 	}
 }

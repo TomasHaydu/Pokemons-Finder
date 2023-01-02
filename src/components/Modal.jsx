@@ -1,4 +1,9 @@
+import usePokemon from "../hooks/UsePokemon"
+
 const Modal = ({ pokeInfo }) => {
+
+    
+    const {colorTypes}  = usePokemon()
 
     return (
         <div
@@ -57,6 +62,7 @@ const Modal = ({ pokeInfo }) => {
                 <p
                  className='modal__container--info'
                  key={poke.type.name}
+                 style={{backgroundColor : `${colorTypes[poke.type.name]}`  }}
                 >{poke.type.name}</p>)}
             </div>
             <div

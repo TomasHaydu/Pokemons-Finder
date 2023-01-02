@@ -47,13 +47,13 @@ const Finder = () => {
             }, 100);
           }}
         />
-        {suggestions !== [] ? suggestions.map((suggestion) => {
+        {suggestions.length !== 0 ? suggestions.map((suggestion) => {
           <div
           key={suggestion.name}
           className="block__finder-suggest" 
           onClick={() => onSuggestHandle(suggestion.name) }
           >{suggestion.name}</div>
-        }) : <p>Error</p>}
+        }) : null}
         {/* <input type="submit" className="block__search" value="Buscar" /> */}
       </form>
     </div>

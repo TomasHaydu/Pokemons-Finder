@@ -44,13 +44,16 @@ const PokeProvider = ({ children }) => {
     }
 
     
-  const favButtonHandle = async (button) => {   
-    setFavButton(!favButton);
-  if (button === false) {
-    setPokemons(fav);
-  } else {
-    setPokemons(await getAllPoke());
-  }
+  const favButtonHandle = (button) => {   
+    setValue(0)
+    setTimeout(async() => {
+      setFavButton(!favButton);
+      if (button === false) {
+        setPokemons(fav);
+      } else {
+        setPokemons(await getAllPoke())
+      }
+    }, 500);
 };
 
 const colorTypes = {
@@ -74,33 +77,6 @@ const colorTypes = {
   'fairy': 'rgb(240,182,188)'
 }
 
-
-    //   const findPoke = async () => {
-    //     const poke = await getAllPoke();
-    //     const pokemonsNames = [];
-    //     poke.results.map((pokeName) => pokemonsNames.push(pokeName));
-    //     const results = [
-    //       pokemonsNames.find((pokemon) => pokemon.name === search),
-    //     ];
-    //     const pokemonWanted = { results };
-    //     return pokemonWanted;
-    //   };
-
-    //   setPokemons(await findPoke());
-    // };
-
-    // const resultsSearch = async (searchTerm) => {
-    //   const allPoke = await getAllPoke();
-    //   const searchResult = (await allPoke.results).filter((element) => {
-    //     const name = element.name.toString().toLowerCase();
-    //     if (searchTerm === "" || searchTerm === undefined) {
-    //       return element;
-    //     } else if (name.includes(searchTerm.toLowerCase())) {
-    //       return element;
-    //     } else return null;
-    //   });
-    //   setPokemons(await searchResult);
-  //};
 
   return (
     <PokeContext.Provider

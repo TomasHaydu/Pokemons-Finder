@@ -28,7 +28,7 @@ const Modal = ({ pokeInfo }) => {
                 >ALTURA: </label>
                 <p
                  className='modal__container--info'
-                >{pokeInfo.height/10}mts</p>
+                >{pokeInfo.height/10} {""} mts</p>
             </div>
             <div
                 className='modal__container'
@@ -38,7 +38,7 @@ const Modal = ({ pokeInfo }) => {
                 >PESO: </label>
                 <p
                  className='modal__container--info'
-                >{pokeInfo.weight/10}kg</p>
+                >{pokeInfo.weight/10} {""} kg</p>
             </div>
             <div
                 className='modal__container'

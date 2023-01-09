@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import NoFav from "../icons/fav-icon-nofav.png";
 import Fav from "../icons/fav-icon-fav.png";
+import ErrorImg from "../icons/error-img.png";
 import usePokemon from "../hooks/UsePokemon";
 import MoreInfoModal from "./MoreInfoModal";
+import Spinner from "./Spinner";
 
 const Pokemons = ({ pokemon }) => {
   const [pokeInfo, setPokeInfo] = useState([]);
@@ -97,14 +99,13 @@ const Pokemons = ({ pokemon }) => {
                   pokeInfo.sprites
                     ? pokeInfo.sprites.other.dream_world.front_default
                       ? pokeInfo.sprites.other.dream_world.front_default
-                      : pokeInfo.sprites.back_default
-                    : null
+                      : pokeInfo.sprites.back_default !== null ? pokeInfo.sprites.back_default : ErrorImg : <Spinner/>
                 }
                 alt={pokemon.name}
               />
-            ) : null}
+            ) : <Spinner />}
           </div>
-          <div>
+          <div className="container__pokemons-but">
             <button
               className="container__pokemons__button"
               onClick={handleModal}

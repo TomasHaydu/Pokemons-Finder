@@ -18,13 +18,16 @@ const PokeFinder = () => {
     value,
     getAllPoke,
     favButton,
-    favButtonHandle
+    favButtonHandle,
+    setPokemons
   } = usePokemon();
 
 
   return (
-    <div>
-      <div className="header" onClick={() => getAllPoke()}>
+    <div className="responsive">
+      <div className="header" 
+      onClick={async() => setPokemons(await getAllPoke())}
+      >
         <p className="header__title">Pokemon Finder</p>
       </div>
 
@@ -41,7 +44,9 @@ const PokeFinder = () => {
         {pokemons.length > 0 ? (
           pokemons
             .slice(value, value + 20)
-            .map((pokemon) => <Pokemon pokemon={pokemon} key={keyFunction()} />)
+            .map((pokemon) => <Pokemon 
+            pokemon={pokemon} 
+            key={keyFunction()} />)
         ) : (
           <Alert />
         )}
@@ -54,9 +59,11 @@ const PokeFinder = () => {
             onClick={() => {
               value <= 20 ? null : setValue(value - 20);
             }}
+            
+            style={pokemons.length < 20 || value === 0 ? {pointerEvents:"none", background:"gray", cursor:"not-allowed"} : {}}
           >
-            {" "}
-            Anterior{" "}
+            
+            Anterior
           </a>
           <a
             className={
@@ -66,8 +73,8 @@ const PokeFinder = () => {
             }
             onClick={() => setValue(0)}
           >
-            {" "}
-            1{" "}
+            
+            1
           </a>
           <a
             className={
@@ -77,9 +84,10 @@ const PokeFinder = () => {
             }
             onClick={() => setValue(20)}
             value="2"
+            style={pokemons.length < 20 ? {pointerEvents:"none", background:"gray", cursor:"not-allowed"} : {}}
           >
-            {" "}
-            2{" "}
+            
+            2
           </a>
           <a
             className={
@@ -89,9 +97,10 @@ const PokeFinder = () => {
             }
             onClick={() => setValue(40)}
             value="3"
+            style={pokemons.length < 40 ? {pointerEvents:"none", background:"gray", cursor:"not-allowed"} : {}}
           >
-            {" "}
-            3{" "}
+            
+            3
           </a>
           <a
             className={
@@ -101,9 +110,10 @@ const PokeFinder = () => {
             }
             onClick={() => setValue(60)}
             value="4"
+            style={pokemons.length < 60 ? {pointerEvents:"none", background:"gray", cursor:"not-allowed"} : {}}
           >
-            {" "}
-            4{" "}
+            
+            4
           </a>
           <a
             className={
@@ -112,18 +122,20 @@ const PokeFinder = () => {
                 : " nav__container__a"
             }
             onClick={() => setValue(80)}
+            style={pokemons.length < 80 ? {pointerEvents:"none", background:"gray", cursor:"not-allowed"} : {}}
           >
-            {" "}
-            {value <= 60 ? 5 : value / 20 + 1}{" "}
+            
+            {value <= 60 ? 5 : value / 20 + 1}
           </a>
           <a
             className="nav__container__a nav__container__a_siguiente"
             onClick={() => {
               value >= 1140 ? null : setValue(value + 20);
             }}
+            style={pokemons.length < 20 ? {pointerEvents:"none", background:"gray", cursor:"not-allowed"} : {}}
           >
-            {" "}
-            Siguiente{" "}
+            
+            Siguiente
           </a>
         </nav>
       </div>
